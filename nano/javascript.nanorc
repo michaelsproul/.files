@@ -1,0 +1,13 @@
+## Javascript syntax highlighting
+syntax "javascript" "\.js$"
+color brightmagenta "function [0-9A-Za-z_]+"
+color brightyellow "\<(break|case|catch|continue|debugger|default|delete|do|else|finally|for|function|if|in|instanceof|new|return|switch|this|throw|try|typeof|void|while|with)\>"
+color brightyellow "\<(var)\>"
+color brightwhite "\<(true|false|null)\>"
+color brightmagenta "['][^']*[^\\][']"
+color brightmagenta "["][^"]*[^\\]["]"
+color brightcyan "//.*$"
+color brightcyan start="/\*" end="\*/"
+
+## Trailing whitespace, always
+color ,yellow "[[:space:]]+$"

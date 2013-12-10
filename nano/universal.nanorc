@@ -1,0 +1,5 @@
+# Syntax highlighting for ALL files
+syntax "universal" ".*"
+
+# Trailing whitespace
+color ,cyan "[[:space:]]+$"

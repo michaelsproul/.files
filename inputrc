@@ -1,0 +1,9 @@
+# Tab completion
+set show-all-if-ambiguous on
+
+# Auto complete symlink directories
+set mark-symlinked-directories on
+
+# History search
+"\e[A":history-search-backward
+"\e[B":history-search-forward
