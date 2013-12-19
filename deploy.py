@@ -1,81 +1,108 @@
 #!/usr/bin/env python3
 
+"""Dotfiles deploy script by Michael Sproul, 2013. GPLv2+"""
+
 import os
+import shutil
 
-EXCLUDE = {"deploy.py", "Readme.md"}
+# Set of paths to exclude, relative to the current directory
+EXCLUDE = {"deploy.py", "Readme.md", ".git"}
 
-def deploy(src=".", dest="~", overwrite=False):
-	src = os.path.abspath(os.path.expanduser(src))
-	dest = os.path.abspath(os.path.expanduser(dest))
+# Set of directories which will be linked *as directories*
+DIR_LINKS = {"nano"}
 
-	for file in os.listdir(src):
-		# Skip excluded and dot files
-		if file in EXCLUDE or file[0] == '.':
-			continue
+def recursive_mirror(src_root, path, dest_root, add_dot=True):
+	"""Mirror a single path relative to `src_root` onto `dest_root`.
 
-		# Spell out full paths for the link and target
-		target_file = os.path.join(src, file)
-		link_file = os.path.join(dest, ".%s" % file)
+	The "mirroring" is done via symbolic links.
+	If `path` is the empty string, the whole directory is mirrored.
+	If `add_dot` is true, a dot will be prepended to each filename
+	in the root of the source directory. Dots are never added to
+	filenames in lower directories.
 
-		# Create a symlink if there's room
-		if delete(link_file, overwrite=overwrite):
-			symlink(target_file, link_file)
-		else:
-			print("No link created for %s" % file)
-
-
-def delete(path, overwrite=False):
-	"""Attempt to delete the file or folder specified by `path`.
-
-	If `overwrite` is False, confirmation will be sought before deleting.
-	This function returns True if the path is successfully cleared.
+	E.g. 	~/.nanorc -> ~/.files/nanorc
+		~/.config/menus/xfce.menu -> ~/.files/config/menus/xfce.menu
 	"""
-	# Symbolic link deletion
-	if os.path.islink(path):
-		if overwrite:
-			os.remove(path)
-			return True
+	if path in EXCLUDE:
+		return
 
-		choice = input("Remove symbolic link %s? [y/N] " % path)
-		if choice.lower() in "no":
+	# Avoid adding doubled dotted files like "..git"
+	if add_dot and path != "" and path[0] == '.':
+		print(">> You're about to make a file called .%s" % path)
+		ans = input(">> Are you on crack? Continue? [y/N] ")
+		if ans == "" or ans.lower() not in "yes":
+			return
+
+	src = os.path.join(src_root, path)
+	prefix = "." if add_dot else ""
+	dest = os.path.join(dest_root, "%s%s" % (prefix, path))
+
+	# Create symlinks for files and "linkable" directories
+	if os.path.isfile(src) or path in DIR_LINKS:
+		# Make room at the destination if neccessary
+		if os.path.islink(dest):
+			if os.readlink(dest) == src:
+				print("%s is up to date." % dest)
+			else:
+				if delete(dest, "link"):
+					symlink(src, dest)
+				#else:
+					#print("%s not linked." % src)
+		elif os.path.isdir(dest):
+			if delete(dest, "dir"):
+				symlink(src, dest)
+			#else:
+				#print("%s not linked." % src)
+		elif os.path.isfile(dest):
+			if delete(dest, "file"):
+				symlink(src, dest)
+			#else:
+				#print("%s not linked." % src)
+		else:
+			parent = os.path.dirname(dest)
+			try:
+				os.makedirs(parent, exist_ok=True)
+			except OSError:
+				pass
+			symlink(src, dest)
+
+	# Recurse on the contents of directories
+	elif os.path.isdir(src):
+		for p in os.listdir(src):
+			new_path = os.path.join(path, p)
+			recursive_mirror(src_root, new_path, dest_root, add_dot)
+	else:
+		print("What's going on?!")
+
+
+def delete(path, type):
+	if type == "dir":
+		ans = input(">> Delete entire directory %s ? [y/N] ")
+		if ans.lower() in "no":
+			return False
+		else:
+			shutils.rmtree(path)
+			return True
+	else:
+		ans = input(">> Delete existing %s, %s ? [y/N] " % (type, path))
+		if ans.lower() in "no":
 			return False
 		else:
 			os.remove(path)
 			return True
 
-	# File deletion
-	if os.path.isfile(path):
-		if overwrite:
-			os.remove(path)
-			return True
 
-		choice = input("Remove regular file %s? [y/N] " % path)
-		if choice.lower() in "no":
-			return False
-		else:
-			os.remove(path)
-			return True
-
-	# Directory deletion
-	if os.path.isdir(path):
-		if overwrite:
-			os.removedirs(path)
-			return True
-
-		choice = input("Remove ENTIRE DIRECTORY %s? [y/N] " % path)
-		if choice.lower() in "no":
-			return False
-		else:
-			os.removedirs(path)
-			return True
-
-	# Nothing to delete
-	return True
+def symlink(target, link):
+	print("%s -> %s" % (link, target))
+	os.symlink(target, link)
 
 
-def symlink(target_file, link_file):
-	print("Symlinking %s -> %s" % (link_file, target_file))
-	os.symlink(target_file, link_file)
+def deploy(src_root="~/.files", dest_root="~"):
+	src_root = os.path.abspath(os.path.expanduser(src_root))
+	dest_root = os.path.abspath(os.path.expanduser(dest_root))
+	recursive_mirror(src_root, "", dest_root, True)
+
 
 if __name__ == "__main__":
 	deploy()
+
