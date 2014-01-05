@@ -1,7 +1,6 @@
 # .nanorc
 
 # Syntax highlighting
-include "~/.nano/universal.nanorc"
 include "~/.nano/nanorc.nanorc"
 
 include "~/.nano/javascript.nanorc"
