@@ -17,8 +17,8 @@ alias cp='/usr/bin/cp -i'
 # Personal binaries
 export PATH=~/Applications:~/Applications/scripts:$PATH
 
-# Fuck vi, vim, etc
-export EDITOR="nano"
+# Err...
+export EDITOR="vim"
 
 function prompt() {
 	local BLACK="\[\033[0;30m\]"
