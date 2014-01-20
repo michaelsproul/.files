@@ -5,6 +5,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Enable 256 colour support
+if [ $COLORTERM == "gnome-terminal" ]
+then
+	export TERM="xterm-256color"
+fi
+
 # Coloured commands
 alias ls='ls --color=auto'
 alias grep='/usr/bin/grep --color=auto'

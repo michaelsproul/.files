@@ -18,8 +18,5 @@ match ExtraWhiteSpace /\s\+$/
 highlight ColorColumn ctermbg=darkblue
 set colorcolumn=100
 
-" Magic status bar
-" set statusline=%1*%F%m%r%h\ [%{&ff}]\ %y%w%=%(Hex:%2B\ %l:%c%V/%L\ %P%)
-
 " Disable line wrapping
 set nowrap
