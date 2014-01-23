@@ -1,8 +1,20 @@
+" Not Vi compatible
 set nocompatible
+
+" Use UTF-8
+set encoding=utf-8
+
+" Detect filetype, but don't run shitty plug-ins or enable auto indenting
 filetype on
+
+" Set the terminal title when editing
+set title
 
 " Use two semicolons instead of ESC
 imap ;; <ESC>
+
+" Make backspace behave sanely
+set backspace=indent,eol,start
 
 " Syntax highlighting
 syntax on
@@ -15,7 +27,7 @@ highlight ExtraWhiteSpace ctermbg=lightblue
 match ExtraWhiteSpace /\s\+$/
 
 " Show line barrier at column 100
-highlight ColorColumn ctermbg=darkblue
+highlight ColorColumn ctermbg=237
 set colorcolumn=100
 
 " Disable line wrapping
@@ -31,6 +43,11 @@ set virtualedit=onemore
 set noexpandtab
 set tabstop=8
 
-autocmd FileType python setlocal tabstop=8
 autocmd FileType html setlocal tabstop=4
 
+" Disable line numbering
+set nonumber
+
+" Powerline config
+set laststatus=2
+set noshowmode

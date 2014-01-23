@@ -6,7 +6,8 @@ import os
 import shutil
 
 # Set of paths to exclude, relative to the current directory
-EXCLUDE = {"deploy.py", "Readme.md", ".git"}
+EXCLUDE = {"deploy.py", "Readme.md", ".git", ".gitmodules",
+		"vim/colors/tomorrow" }
 
 # Set of directories which will be linked *as directories*
 DIR_LINKS = {"nano"}
