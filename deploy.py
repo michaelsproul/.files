@@ -6,11 +6,10 @@ import os
 import shutil
 
 # Set of paths to exclude, relative to the current directory
-EXCLUDE = {"deploy.py", "Readme.md", ".git", ".gitmodules",
-		"vim/colors/tomorrow" }
+EXCLUDE = {"deploy.py", "Readme.md", ".git", ".gitmodules" }
 
 # Set of directories which will be linked *as directories*
-DIR_LINKS = {"nano"}
+DIR_LINKS = {"nano", "vim/colors", "vim/syntax", "vim/bundle"}
 
 def recursive_mirror(src_root, path, dest_root, add_dot=True):
 	"""Mirror a single path relative to `src_root` onto `dest_root`.
@@ -78,11 +77,11 @@ def recursive_mirror(src_root, path, dest_root, add_dot=True):
 
 def delete(path, type):
 	if type == "dir":
-		ans = input(">> Delete entire directory %s ? [y/N] ")
+		ans = input(">> Delete entire directory %s ? [y/N] " % path)
 		if ans.lower() in "no":
 			return False
 		else:
-			shutils.rmtree(path)
+			shutil.rmtree(path)
 			return True
 	else:
 		ans = input(">> Delete existing %s, %s ? [y/N] " % (type, path))

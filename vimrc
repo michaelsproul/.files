@@ -1,10 +1,19 @@
-" Not Vi compatible
 set nocompatible
+filetype off
+
+" Set up Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" Vundle plug-ins
+Bundle 'godlygeek/csapprox'
+Bundle 'noahfrederick/vim-hemisu'
 
 " Use UTF-8
 set encoding=utf-8
 
-" Detect filetype, but don't run shitty plug-ins or enable auto indenting
+" Detect filetype, but don't enable auto indenting
 filetype on
 
 " Set the terminal title when editing
@@ -19,7 +28,14 @@ set backspace=indent,eol,start
 " Syntax highlighting
 syntax on
 set background=dark
-colorscheme ir_black
+
+" Set up CSApprox
+let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+
+" Use terminal background colour
+let g:CSApprox_hook_post = ['hi Normal ctermfg=NONE ctermbg=NONE',
+			\   'hi NonText ctermbg=NONE ctermfg=NONE']
+colorscheme hemisu
 
 " Higlight trailing whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=lightblue
@@ -43,7 +59,7 @@ set virtualedit=onemore
 set noexpandtab
 set tabstop=8
 
-autocmd FileType html setlocal tabstop=4
+autocmd FileType html,xml,css,scss setlocal tabstop=4
 
 " Disable line numbering
 set nonumber

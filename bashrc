@@ -54,7 +54,7 @@ prompt
 export PYTHONDONTWRITEBYTECODE=1
 
 # Include /usr/local/ libraries
-export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7:/usr/local/lib/python2.7/site-packages
+export PYTHONPATH=/usr/local/lib/python2.7:/usr/local/lib/python2.7/site-packages:/usr/lib/python3.3/site-packages/
 
 # Git Stuff
 # =========
@@ -71,3 +71,7 @@ function lc() {
 
 # Android tools
 export PATH=$PATH:~/Applications/adt/sdk/platform-tools
+
+# Ruby
+# ====
+eval "$(rbenv init -)"
