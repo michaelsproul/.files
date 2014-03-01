@@ -9,6 +9,7 @@ Bundle 'gmarik/vundle'
 " Vundle plug-ins
 Bundle 'godlygeek/csapprox'
 Bundle 'noahfrederick/vim-hemisu'
+Bundle 'wting/rust.vim'
 
 " Use UTF-8
 set encoding=utf-8
@@ -46,8 +47,10 @@ match ExtraWhiteSpace /\s\+$/
 highlight ColorColumn ctermbg=237
 set colorcolumn=100
 
-" Disable line wrapping
+" Set up line wrapping
 set nowrap
+set linebreak
+set textwidth=0
 
 " Allow arrow keys to wrap at the end of lines
 set whichwrap+=<,>,[,]
@@ -59,7 +62,10 @@ set virtualedit=onemore
 set noexpandtab
 set tabstop=8
 
-autocmd FileType html,xml,css,scss setlocal tabstop=4
+" Filetype settings
+autocmd FileType html,xml,css,scss,haskell setlocal tabstop=4
+autocmd FileType text,markdown setlocal wrap
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 " Disable line numbering
 set nonumber
@@ -67,3 +73,6 @@ set nonumber
 " Powerline config
 set laststatus=2
 set noshowmode
+
+" Allow sudo write with :W
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
