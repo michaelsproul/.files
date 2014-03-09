@@ -70,8 +70,8 @@ prompt
 # Proxy config
 if [ $MACHINE_TYPE == "uni" ]
 then
-	export $HTTP_PROXY=web-cache.usyd.edu.au:8080
-	export $FTP_PROXY=$HTTP_PROXY
+	export HTTP_PROXY=web-cache.usyd.edu.au:8080
+	export FTP_PROXY=$HTTP_PROXY
 fi
 
 # Python
