@@ -14,7 +14,14 @@ Bundle 'wting/rust.vim'
 " Powerline config
 set laststatus=2
 set noshowmode
-let $PYTHONPATH="/usr/lib/python3.3/site-packages"
+
+if $MACHINE_TYPE == "uni"
+	python from powerline.vim import setup as powerline_setup
+	python powerline_setup()
+	python del powerline_setup
+else
+	let $PYTHONPATH="/usr/lib/python3.3/site-packages"
+endif
 
 " Use UTF-8
 set encoding=utf-8
