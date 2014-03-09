@@ -103,7 +103,7 @@ fi
 # Ruby
 # ====
 
-if [ $MACHINE_TYPE == "desktop" -o $MACHINE_TYPE == "laptop" ]
+if hash rbenv 2> /dev/null
 then
 	eval "$(rbenv init -)"
 fi
