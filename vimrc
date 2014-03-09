@@ -11,6 +11,11 @@ Bundle 'godlygeek/csapprox'
 Bundle 'noahfrederick/vim-hemisu'
 Bundle 'wting/rust.vim'
 
+" Powerline config
+set laststatus=2
+set noshowmode
+let $PYTHONPATH="/usr/lib/python3.3/site-packages"
+
 " Use UTF-8
 set encoding=utf-8
 
@@ -26,14 +31,21 @@ imap ;; <ESC>
 " Make backspace behave sanely
 set backspace=indent,eol,start
 
+" Searching
+set hlsearch
+nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+" Scrolling
+set scrolloff=8
+
 " Syntax highlighting
 syntax on
 set background=dark
 
-" Set up CSApprox
+" Set up CSApprox (colour scheme approximation)
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
-" Use terminal background colour
+" Use the terminal's background colour
 let g:CSApprox_hook_post = ['hi Normal ctermfg=NONE ctermbg=NONE',
 			\   'hi NonText ctermbg=NONE ctermfg=NONE']
 colorscheme hemisu
@@ -69,10 +81,6 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 " Disable line numbering
 set nonumber
-
-" Powerline config
-set laststatus=2
-set noshowmode
 
 " Allow sudo write with :W
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!

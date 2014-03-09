@@ -5,27 +5,41 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Enable 256 colour support
-if [ $COLORTERM == "gnome-terminal" ]
+# Establish the machine type, for customisation purposes
+if [ -e "$HOME/.machine_type" ]
 then
-	export TERM="xterm-256color"
+	export MACHINE_TYPE=`cat ~/.machine_type`
+else
+	export MACHINE_TYPE="server"
 fi
 
-# Coloured commands
+# Shorten the hostname
+export SHORTHOSTNAME=`python3 -c "print('$HOSTNAME'.split('.')[0])"`
+
+# Enable 256 colour support
+export TERM="xterm-256color"
+
+# Enable coloured commands
 alias ls='ls --color=auto'
-alias grep='/usr/bin/grep --color=auto'
+alias grep='grep --color=auto'
 export GREP_COLORS='mt=01;36:ms=01;36:mc=01;36'
 
 # Make cp and mv safe by default
-alias mv='/usr/bin/mv -i'
-alias cp='/usr/bin/cp -i'
+alias mv='mv -i'
+alias cp='cp -i'
 
-# Personal binaries
+# Add personal binaries to the path
 export PATH=~/Applications:~/Applications/scripts:$PATH
 
-# Err...
-export EDITOR="vim"
+# Editor setup
+if [ $MACHINE_TYPE == "server" ]
+then
+	export EDITOR="nano"
+else
+	export EDITOR="vim"
+fi
 
+# Coloured prompt
 function prompt() {
 	local BLACK="\[\033[0;30m\]"
 	local BLACKBOLD="\[\033[1;30m\]"
@@ -43,21 +57,30 @@ function prompt() {
 	local CYANBOLD="\[\033[1;36m\]"
 	local WHITE="\[\033[0;37m\]"
 	local WHITEBOLD="\[\033[1;37m\]"
-	export PS1="$GREENBOLD\u$WHITE: $BLUEBOLD\W $WHITE$ "
+
+	if [ $MACHINE_TYPE == "server"  -o $MACHINE_TYPE == "uni" ]
+	then
+		export PS1="[$GREENBOLD\u@$SHORTHOSTNAME$WHITE: $BLUEBOLD\W$WHITE ] $ "
+	else
+		export PS1="$GREENBOLD\u$WHITE: $BLUEBOLD\W$WHITE $ "
+	fi
 }
 prompt
 
-# Python Stuff
-# ============
+# Proxy config
+if [ $MACHINE_TYPE == "uni" ]
+then
+	export $HTTP_PROXY=web-cache.usyd.edu.au:8080
+	export $FTP_PROXY=$HTTP_PROXY
+fi
 
-# No __pycache__ folders
+# Python
+# ======
+
 export PYTHONDONTWRITEBYTECODE=1
 
-# Include /usr/local/ libraries
-export PYTHONPATH=/usr/local/lib/python2.7:/usr/local/lib/python2.7/site-packages:/usr/lib/python3.3/site-packages/
-
-# Git Stuff
-# =========
+# Git
+# ===
 
 # Git line counter
 function lc() {
@@ -69,9 +92,18 @@ function lc() {
 	fi
 }
 
-# Android tools
-export PATH=$PATH:~/Applications/adt/sdk/platform-tools
+# Android
+# =======
+
+if [ $MACHINE_TYPE == "desktop" ]
+then
+	export PATH=~/Applications/adt/sdk/platform-tools:$PATH
+fi
 
 # Ruby
 # ====
-eval "$(rbenv init -)"
+
+if [ $MACHINE_TYPE == "desktop" -o $MACHINE_TYPE == "laptop" ]
+then
+	eval "$(rbenv init -)"
+fi

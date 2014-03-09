@@ -144,6 +144,7 @@
 	<Menu>
 		<Name>Office</Name>
 		<Directory>xfce-office.directory</Directory>
+		<AppDir>/home/michael/.local/share/applications</AppDir>
 		<Include>
 			<Category>Office</Category>
 		</Include>

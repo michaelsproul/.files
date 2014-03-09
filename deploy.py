@@ -6,10 +6,10 @@ import os
 import shutil
 
 # Set of paths to exclude, relative to the current directory
-EXCLUDE = {"deploy.py", "Readme.md", ".git", ".gitmodules" }
+EXCLUDE = {"deploy.py", "Readme.md", ".git", ".gitignore", ".gitmodules"}
 
 # Set of directories which will be linked *as directories*
-DIR_LINKS = {"nano", "vim/colors", "vim/syntax", "vim/bundle"}
+DIR_LINKS = {"nano", "vim/syntax", "vim/bundle"}
 
 def recursive_mirror(src_root, path, dest_root, add_dot=True):
 	"""Mirror a single path relative to `src_root` onto `dest_root`.
