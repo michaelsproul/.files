@@ -10,18 +10,15 @@ Bundle 'gmarik/vundle'
 Bundle 'godlygeek/csapprox'
 Bundle 'noahfrederick/vim-hemisu'
 Bundle 'wting/rust.vim'
+"Bundle 'scrooloose/syntastic'
 
 " Powerline config
 set laststatus=2
 set noshowmode
 
-if $MACHINE_TYPE == "uni"
-	python from powerline.vim import setup as powerline_setup
-	python powerline_setup()
-	python del powerline_setup
-else
-	let $PYTHONPATH="/usr/lib/python3.3/site-packages"
-endif
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 " Use UTF-8
 set encoding=utf-8

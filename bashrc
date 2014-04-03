@@ -13,9 +13,6 @@ else
 	export MACHINE_TYPE="server"
 fi
 
-# Shorten the hostname
-export SHORTHOSTNAME=`python3 -c "print('$HOSTNAME'.split('.')[0])"`
-
 # Enable 256 colour support
 export TERM="xterm-256color"
 
@@ -60,9 +57,9 @@ function prompt() {
 
 	if [ $MACHINE_TYPE == "server"  -o $MACHINE_TYPE == "uni" ]
 	then
-		export PS1="[$GREENBOLD\u@$SHORTHOSTNAME$WHITE: $BLUEBOLD\W$WHITE ] $ "
+		export PS1="[${GREENBOLD}\u@\h${WHITE}: ${BLUEBOLD}\W${WHITE} ] $ "
 	else
-		export PS1="$GREENBOLD\u$WHITE: $BLUEBOLD\W$WHITE $ "
+		export PS1="${GREENBOLD}michael${WHITE}: ${BLUEBOLD}\W${WHITE} $ "
 	fi
 }
 prompt
@@ -77,6 +74,7 @@ fi
 # Python
 # ======
 
+export PYTHONSTARTUP="~/.pyrc.py"
 export PYTHONDONTWRITEBYTECODE=1
 
 # Git
@@ -106,4 +104,14 @@ fi
 if hash rbenv 2> /dev/null
 then
 	eval "$(rbenv init -)"
+fi
+
+# Gurboi
+# ======
+if [ $MACHINE_TYPE == "desktop" ]
+then
+	export HOSTNAME="michael-desktop" # lol
+	export GUROBI_HOME="/opt/gurobi562"
+	export PATH="${PATH}:${GUROBI_HOME}/bin"
+	export LD_LIBRARY_PATH="${GUROBI_HOME}/lib"
 fi
