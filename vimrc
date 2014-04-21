@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 Bundle 'godlygeek/csapprox'
 Bundle 'noahfrederick/vim-hemisu'
 Bundle 'wting/rust.vim'
+Bundle 'Lokaltog/vim-distinguished'
 "Bundle 'scrooloose/syntastic'
 
 " Powerline config
@@ -34,6 +35,10 @@ imap ;; <ESC>
 
 " Make backspace behave sanely
 set backspace=indent,eol,start
+
+" Make the home key go to the first non whitespace character
+noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+imap <silent> <Home> <C-O><Home>
 
 " Searching
 set hlsearch
@@ -77,6 +82,18 @@ set virtualedit=onemore
 " Tab configuration
 set noexpandtab
 set tabstop=8
+
+function Tabs(width)
+	set noexpandtab nosmarttab
+        let &tabstop=a:width
+        let &shiftwidth=a:width
+endfunction
+
+function Spaces(width)
+	set expandtab smarttab
+        let &tabstop=a:width
+        let &shiftwidth=a:width
+endfunction
 
 " Filetype settings
 autocmd FileType html,xml,css,scss,haskell setlocal tabstop=4

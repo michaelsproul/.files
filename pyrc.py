@@ -1,8 +1,8 @@
 import os
 import sys
+import atexit
 import readline
 import rlcompleter
-import atexit
 
 def enable_completion():
 	completer = Completer()

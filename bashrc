@@ -74,7 +74,7 @@ fi
 # Python
 # ======
 
-export PYTHONSTARTUP="~/.pyrc.py"
+export PYTHONSTARTUP="$HOME/.pyrc.py"
 export PYTHONDONTWRITEBYTECODE=1
 
 # Git
@@ -110,8 +110,10 @@ fi
 # ======
 if [ $MACHINE_TYPE == "desktop" ]
 then
-	export HOSTNAME="michael-desktop" # lol
 	export GUROBI_HOME="/opt/gurobi562"
 	export PATH="${PATH}:${GUROBI_HOME}/bin"
 	export LD_LIBRARY_PATH="${GUROBI_HOME}/lib"
+	export GRB_LICENSE_FILE="$HOME/.gurobi.lic"
 fi
+
+alias nash="cd ~/Uni/INFO3911/Git\ Repo/"
