@@ -3,3 +3,5 @@
 	name = Michael Sproul
 [color]
 	ui = true
+[push]
+	default = simple

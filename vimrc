@@ -2,24 +2,29 @@ set nocompatible
 filetype off
 
 " Set up Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
 " Vundle plug-ins
-Bundle 'godlygeek/csapprox'
-Bundle 'noahfrederick/vim-hemisu'
-Bundle 'wting/rust.vim'
-Bundle 'Lokaltog/vim-distinguished'
-"Bundle 'scrooloose/syntastic'
+Plugin 'godlygeek/csapprox'
+Plugin 'noahfrederick/vim-hemisu'
+Plugin 'wting/rust.vim'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'ciaranm/detectindent'
+Plugin 'cespare/vim-toml'
+Plugin 'bling/vim-airline'
 
-" Powerline config
+call vundle#end()
+
+" Status line config
 set laststatus=2
 set noshowmode
 
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+" Airline config
+let g:airline_theme = 'powerlineish'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#whitespace#enabled = 1
 
 " Use UTF-8
 set encoding=utf-8
@@ -80,9 +85,6 @@ set whichwrap+=<,>,[,]
 set virtualedit=onemore
 
 " Tab configuration
-set noexpandtab
-set tabstop=8
-
 function Tabs(width)
 	set noexpandtab nosmarttab
         let &tabstop=a:width
@@ -95,10 +97,13 @@ function Spaces(width)
         let &shiftwidth=a:width
 endfunction
 
-" Filetype settings
-autocmd FileType html,xml,css,scss,haskell setlocal tabstop=4
-autocmd FileType text,markdown setlocal wrap
+call Spaces(4)
+
+" Custom filetype settings
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd FileType text,markdown setlocal wrap
+autocmd FileType make call Tabs(8)
+autocmd FileType c,c++ call Tabs(4)
 
 " Disable line numbering
 set nonumber

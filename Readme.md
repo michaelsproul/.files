@@ -1,4 +1,4 @@
 Dotfiles
 ========
 
-Config, mostly for the hated `nano`
+My config files.

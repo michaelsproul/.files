@@ -15,8 +15,8 @@ include "~/.nano/java.nanorc"
 # Don't wrap long lines
 set nowrap
 
-# Truncate lines at column 80
-set fill 80
+# Truncate lines at column 100
+set fill 100
 
 # Make search case sensitive
 set casesensitive

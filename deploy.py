@@ -9,7 +9,7 @@ import shutil
 EXCLUDE = {"deploy.py", "Readme.md", ".git", ".gitignore", ".gitmodules"}
 
 # Set of directories which will be linked *as directories*
-DIR_LINKS = {"nano", "vim/syntax", "vim/bundle"}
+DIR_LINKS = {"bash", "nano", "vim/syntax", "vim/bundle"}
 
 def recursive_mirror(src_root, path, dest_root, add_dot=True):
 	"""Mirror a single path relative to `src_root` onto `dest_root`.
@@ -20,8 +20,8 @@ def recursive_mirror(src_root, path, dest_root, add_dot=True):
 	in the root of the source directory. Dots are never added to
 	filenames in lower directories.
 
-	E.g. 	~/.nanorc -> ~/.files/nanorc
-		~/.config/menus/xfce.menu -> ~/.files/config/menus/xfce.menu
+	E.g.	~/.nanorc -> ~/.files/nanorc
+			~/.config/menus/xfce.menu -> ~/.files/config/menus/xfce.menu
 	"""
 	if path in EXCLUDE:
 		return

@@ -1,1 +1,1 @@
-:set prompt "[\ESC[1;32mghci\ESC[m]: "
+:set prompt "[\ESC[1;32mghci\ESC[m] "
