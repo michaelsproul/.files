@@ -20,6 +20,9 @@ alias cp='cp -i'
 # Add personal binaries to the path
 export PATH=~/Applications:~/Applications/scripts:$PATH
 
+# Vim
+export EDITOR=vim
+
 # Terminal colours
 BLACK="\[\033[0;30m\]"
 BLACKBOLD="\[\033[1;30m\]"
