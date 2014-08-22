@@ -1,0 +1,2 @@
+# Prompt
+export PS1="${GREENBOLD}michael${WHITE}: ${BLUEBOLD}\W${WHITE} \$ "
