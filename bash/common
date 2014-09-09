@@ -66,3 +66,8 @@ fi
 # =======
 
 export PATH=~/.cabal/bin:$PATH
+
+# Perl
+# ====
+
+export PATH=/usr/bin/vendor_perl/:$PATH
