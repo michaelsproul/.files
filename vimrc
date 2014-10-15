@@ -103,7 +103,6 @@ call Spaces(4)
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
-autocmd FileType c,c++ call Tabs(4)
 
 " Disable line numbering
 set nonumber
