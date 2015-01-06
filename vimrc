@@ -14,6 +14,7 @@ Plugin 'Lokaltog/vim-distinguished'
 Plugin 'ciaranm/detectindent'
 Plugin 'cespare/vim-toml'
 Plugin 'bling/vim-airline'
+Plugin 'jelera/vim-javascript-syntax'
 
 call vundle#end()
 
@@ -47,6 +48,7 @@ imap <silent> <Home> <C-O><Home>
 
 " Searching
 set hlsearch
+set incsearch
 nnoremap <silent> <C-l> :nohl<CR><C-l>
 
 " Scrolling
@@ -84,6 +86,9 @@ set whichwrap+=<,>,[,]
 " Allow lurking at the end of a line
 set virtualedit=onemore
 
+" Mouse support
+set mouse=a
+
 " Tab configuration
 function Tabs(width)
 	set noexpandtab nosmarttab
@@ -109,3 +114,6 @@ set nonumber
 
 " Allow sudo write with :W
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+" Use the system clipboard
+set clipboard=unnamedplus

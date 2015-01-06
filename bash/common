@@ -17,6 +17,9 @@ export GREP_COLORS='mt=01;36:ms=01;36:mc=01;36'
 alias mv='mv -i'
 alias cp='cp -i'
 
+# Screen off alias.
+alias screen-off='xset dpms force off'
+
 # Add personal binaries to the path
 export PATH=~/Applications:~/Applications/scripts:$PATH
 
