@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-"""Dotfiles deploy script by Michael Sproul, 2013. GPLv2+"""
+"""Dotfiles deploy script by Michael Sproul, 2015. GPLv3+"""
 
 import os
 import shutil
