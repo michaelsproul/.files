@@ -14,6 +14,7 @@ Plugin 'ciaranm/detectindent'
 Plugin 'cespare/vim-toml'
 Plugin 'bling/vim-airline'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'lambdatoast/elm.vim'
 
 call vundle#end()
 
