@@ -72,8 +72,8 @@ set colorcolumn=100
 
 
 " -- Editing.
-" Use two semicolons instead of ESC to exit insert mode.
-inoremap ;; <Esc>
+" Exit insert mode immediately.
+set timeoutlen=1000 ttimeoutlen=0
 
 " Allow backspacing over lines/indents and past the start of an insertion.
 set backspace=indent,eol,start
