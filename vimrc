@@ -8,13 +8,14 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'godlygeek/csapprox'
 Plugin 'noahfrederick/vim-hemisu'
-Plugin 'wting/rust.vim'
+Plugin 'rust-lang/rust.vim'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'ciaranm/detectindent'
 Plugin 'cespare/vim-toml'
 Plugin 'bling/vim-airline'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'lambdatoast/elm.vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
 
@@ -47,11 +48,12 @@ let g:airline_left_sep = ' '
 let g:airline_right_sep = ' '
 
 " Disable Airline extensions.
+let g:airline#extensions#whitespace#enabled = 0
 let g:airline_detect_modified = 0
 let g:airline_detect_paste = 0
 
 " Status line contents.
-let g:airline_section_z = "line %l/%L"
+let g:airline_section_z = "C%02c L%l/%L"
 
 
 " -- Syntax highlighting.
@@ -157,5 +159,6 @@ autocmd FileType markdown let b:noStripWhitespace=1
 
 " -- File types.
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.pl set filetype=prolog
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)

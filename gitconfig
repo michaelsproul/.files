@@ -7,3 +7,5 @@
 	default = simple
 [credential]
 	helper = cache
+[grep]
+    lineNumber = true
