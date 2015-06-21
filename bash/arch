@@ -1,0 +1,4 @@
+# Arch-linux specific config.
+
+# Perl.
+export PATH=/usr/bin/vendor_perl:$PATH

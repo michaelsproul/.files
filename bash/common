@@ -18,10 +18,10 @@ alias mv='mv -i'
 alias cp='cp -i'
 
 # Screen off alias.
-alias screen-off='xset dpms force off'
+alias off='xset dpms force off'
 
-# Add personal binaries to the path
-export PATH=~/Applications:~/Applications/scripts:$PATH
+# User-installed executables
+export PATH=~/Applications/:$PATH
 
 # Vim
 export EDITOR=vim
@@ -44,33 +44,15 @@ CYANBOLD="\[\033[1;36m\]"
 WHITE="\[\033[0;37m\]"
 WHITEBOLD="\[\033[1;37m\]"
 
-export PS1="[${GREENBOLD}\u@\h${WHITE}: ${BLUEBOLD}\W${WHITE} ] \$ "
+if [ $MACHINE_TYPE = "HOME" ]; then
+    export PS1="${GREENBOLD}\u${WHITE}: ${BLUEBOLD}\W${WHITE} \$ "
+else
+    export PS1="[${GREENBOLD}\u@\h${WHITE}: ${BLUEBOLD}\W${WHITE} ] \$ "
+fi
 
 # Python
-# ======
-
 export PYTHONSTARTUP="$HOME/.pyrc.py"
 export PYTHONDONTWRITEBYTECODE=1
 
-# Git
-# ===
-
-unset SSH_ASKPASS
-
-# Ruby
-# ====
-
-if hash rbenv 2> /dev/null
-then
-	eval "$(rbenv init -)"
-fi
-
 # Haskell
-# =======
-
 export PATH=~/.cabal/bin:$PATH
-
-# Perl
-# ====
-
-export PATH=/usr/bin/vendor_perl/:$PATH

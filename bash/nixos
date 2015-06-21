@@ -1,0 +1,6 @@
+# NixOS specific config.
+
+# List all installed packages.
+function nixos-list-all() {
+    nix-store -q --references /var/run/current-system/sw | cut -d'-' -f2-
+}

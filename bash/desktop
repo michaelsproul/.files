@@ -1,8 +1,0 @@
-# Prompt
-export PS1="${GREENBOLD}michael${WHITE}: ${BLUEBOLD}\W${WHITE} \$ "
-
-# Gurobi
-export GUROBI_HOME="/opt/gurobi562"
-export PATH="${PATH}:${GUROBI_HOME}/bin"
-export LD_LIBRARY_PATH="${GUROBI_HOME}/lib":$LD_LIBRARY_PATH
-export GRB_LICENSE_FILE="$HOME/.gurobi.lic"
