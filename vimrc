@@ -15,6 +15,8 @@ Plugin 'cespare/vim-toml'
 Plugin 'bling/vim-airline'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'lambdatoast/elm.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'idris-hackers/idris-vim'
 Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
@@ -82,8 +84,8 @@ set backspace=indent,eol,start
 
 " Make the home key go to the first non-whitespace character.
 " FIXME: Make this work with wrapping stuff.
-"map <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
-"imap <silent> <Home> <C-O><Home>
+map <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+imap <silent> <Home> <C-O><Home>
 
 " Enable highlighted, incremental search. Use Ctrl-L to clear.
 set hlsearch
@@ -105,15 +107,15 @@ set textwidth=0
 
 " Always move the cursor visually (good for wrapped text).
 " Normal mode:
-nmap <Up> g<Up>
-nmap <Down> g<Down>
-nmap <Home> g<Home>
-nmap <End> g<End>
+"nmap <Up> g<Up>
+"nmap <Down> g<Down>
+"nmap <Home> g<Home>
+"nmap <End> g<End>
 " Insert mode:
-imap <Up> <C-o>g<Up>
-imap <Down> <C-o>g<Down>
-imap <Home> <C-o>g<Home>
-imap <End> <C-o>g<End>
+"imap <Up> <C-o>g<Up>
+"imap <Down> <C-o>g<Down>
+"imap <Home> <C-o>g<Home>
+"imap <End> <C-o>g<End>
 
 " Allow arrow keys to wrap at the end of lines.
 set whichwrap+=<,>,[,]
@@ -162,3 +164,5 @@ autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.pl set filetype=prolog
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
+autocmd FileType go call Tabs(4)
+autocmd FileType html call Spaces(2)
