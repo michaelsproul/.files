@@ -1,0 +1,22 @@
+"*":
+  welcome:
+    showOnStartup: false
+  core:
+    disabledPackages: [
+      "autocomplete-plus"
+    ]
+    themes: [
+      "atom-dark-ui"
+      "base16-tomorrow-dark-theme"
+    ]
+    destroyEmptyPanes: false
+  editor:
+    invisibles:
+      {}
+    preferredLineLength: 100
+    tabLength: 4
+    autoIndentOnPaste: false
+    confirmCheckoutHeadRevision: false
+    fontSize: 19
+  "bracket-matcher":
+    autocompleteSmartQuotes: false
