@@ -11,6 +11,9 @@ EXCLUDE = {"deploy.py", "Readme.md", ".git", ".gitignore", ".gitmodules"}
 # Set of directories which will be linked *as directories*
 DIR_LINKS = {"bash", "nano", "vim/syntax", "vim/bundle"}
 
+NO = ["n", "no"]
+YES = ["y", "yes"]
+
 def recursive_mirror(src_root, path, dest_root, add_dot=True):
 	"""Mirror a single path relative to `src_root` onto `dest_root`.
 
@@ -30,7 +33,7 @@ def recursive_mirror(src_root, path, dest_root, add_dot=True):
 	if add_dot and path != "" and path[0] == '.':
 		print(">> You're about to make a file called .%s" % path)
 		ans = input(">> Are you on crack? Continue? [y/N] ")
-		if ans == "" or ans.lower() not in "yes":
+		if ans == "" or ans.lower() not in YES:
 			return
 
 	src = os.path.join(src_root, path)
@@ -78,14 +81,14 @@ def recursive_mirror(src_root, path, dest_root, add_dot=True):
 def delete(path, type):
 	if type == "dir":
 		ans = input(">> Delete entire directory %s ? [y/N] " % path)
-		if ans.lower() in "no":
+		if ans.lower() in NO:
 			return False
 		else:
 			shutil.rmtree(path)
 			return True
 	else:
 		ans = input(">> Delete existing %s, %s ? [y/N] " % (type, path))
-		if ans.lower() in "no":
+		if ans.lower() in NO:
 			return False
 		else:
 			os.remove(path)
