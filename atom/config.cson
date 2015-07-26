@@ -4,6 +4,7 @@
   core:
     disabledPackages: [
       "autocomplete-plus"
+      "bracket-matcher"
     ]
     themes: [
       "atom-dark-ui"
@@ -11,12 +12,14 @@
     ]
     destroyEmptyPanes: false
   editor:
-    invisibles:
-      {}
+    invisibles: {}
     preferredLineLength: 100
     tabLength: 4
-    autoIndentOnPaste: false
     confirmCheckoutHeadRevision: false
-    fontSize: 19
+    fontFamily: "Dejavu Sans Mono"
+    fontSize: 15
   "bracket-matcher":
     autocompleteSmartQuotes: false
+    autocompleteBrackets: false
+  "exception-reporting":
+    userId: "03bbd3b5-76cc-0de6-fd83-c41c31c6bd08"
