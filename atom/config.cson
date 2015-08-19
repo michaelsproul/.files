@@ -23,3 +23,5 @@
     autocompleteBrackets: false
   "exception-reporting":
     userId: "03bbd3b5-76cc-0de6-fd83-c41c31c6bd08"
+  whitespace:
+    removeTrailingWhitespace: false
