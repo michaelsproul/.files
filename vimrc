@@ -5,7 +5,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-
 Plugin 'godlygeek/csapprox'
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'rust-lang/rust.vim'
@@ -66,9 +65,9 @@ set background=dark
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
 " Use the terminal's background colour.
-let g:CSApprox_hook_post = ['hi Normal ctermfg=NONE ctermbg=NONE',
-			\   'hi NonText ctermbg=NONE ctermfg=NONE']
-colorscheme hemisu
+" let g:CSApprox_hook_post = ['hi Normal ctermfg=NONE ctermbg=NONE',
+"			\   'hi NonText ctermbg=NONE ctermfg=NONE']
+" colorscheme hemisu
 
 " Show line barrier at column 100.
 highlight ColorColumn ctermbg=237
@@ -104,18 +103,6 @@ set clipboard=unnamedplus
 set nowrap
 set linebreak
 set textwidth=0
-
-" Always move the cursor visually (good for wrapped text).
-" Normal mode:
-"nmap <Up> g<Up>
-"nmap <Down> g<Down>
-"nmap <Home> g<Home>
-"nmap <End> g<End>
-" Insert mode:
-"imap <Up> <C-o>g<Up>
-"imap <Down> <C-o>g<Down>
-"imap <Home> <C-o>g<Home>
-"imap <End> <C-o>g<End>
 
 " Allow arrow keys to wrap at the end of lines.
 set whichwrap+=<,>,[,]
@@ -155,8 +142,9 @@ function StripTrailingWhitespace()
     %s/\s\+$//e
 endfunction
 
-autocmd BufWritePre * call StripTrailingWhitespace()
-autocmd FileType markdown let b:noStripWhitespace=1
+" Automatically strip trailing whitespace (disabled).
+" autocmd BufWritePre * call StripTrailingWhitespace()
+" autocmd FileType markdown let b:noStripWhitespace=1
 
 
 " -- File types.
