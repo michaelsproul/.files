@@ -1,0 +1,4 @@
+# Enable coloured commands
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+export GREP_COLORS='mt=01;36:ms=01;36:mc=01;36'

@@ -8,11 +8,6 @@
 # Enable 256 colour support
 export TERM="xterm-256color"
 
-# Enable coloured commands
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-export GREP_COLORS='mt=01;36:ms=01;36:mc=01;36'
-
 # Make cp and mv safe by default
 alias mv='mv -i'
 alias cp='cp -i'
