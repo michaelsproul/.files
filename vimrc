@@ -17,6 +17,8 @@ Plugin 'lambdatoast/elm.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'idris-hackers/idris-vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'def-lkb/vimbufsync'
+Plugin 'the-lambda-church/coquille'
 
 call vundle#end()
 
@@ -44,7 +46,7 @@ set laststatus=2
 set noshowmode
 
 " Super-simple airline config. No stupid patched fonts required.
-let g:airline_theme = 'powerlineish'
+" let g:airline_theme = 'powerlineish'
 let g:airline_left_sep = ' '
 let g:airline_right_sep = ' '
 
@@ -65,9 +67,9 @@ set background=dark
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 
 " Use the terminal's background colour.
-" let g:CSApprox_hook_post = ['hi Normal ctermfg=NONE ctermbg=NONE',
-"			\   'hi NonText ctermbg=NONE ctermfg=NONE']
-" colorscheme hemisu
+let g:CSApprox_hook_post = ['hi Normal ctermfg=NONE ctermbg=NONE',
+			\   'hi NonText ctermbg=NONE ctermfg=NONE']
+colorscheme hemisu
 
 " Show line barrier at column 100.
 highlight ColorColumn ctermbg=237
@@ -150,6 +152,7 @@ endfunction
 " -- File types.
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.pl set filetype=prolog
+autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
 autocmd FileType go call Tabs(4)
