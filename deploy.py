@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 
 """Dotfiles deploy script by Michael Sproul, 2015. GPLv3+"""
 
@@ -64,7 +64,7 @@ def recursive_mirror(src_root, path, dest_root, add_dot=True):
 		else:
 			parent = os.path.dirname(dest)
 			try:
-				os.makedirs(parent, exist_ok=True)
+				os.makedirs(parent)
 			except OSError:
 				pass
 			symlink(src, dest)
