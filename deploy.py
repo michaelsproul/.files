@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python2.7
 
 """Dotfiles deploy script by Michael Sproul, 2015. GPLv3+"""
 
