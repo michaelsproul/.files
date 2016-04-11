@@ -1,8 +1,12 @@
 # ~/Applications
-set -gx PATH ~/Applications PATH
+set -gx PATH ~/Applications $PATH
 
 # Vim
 set -gx EDITOR vim
+
+# Python
+set -gx PYTHONSTARTUP "$HOME/.pyrc.py"
+set -gx PYTHONDONTWRITEBYTECODE 1
 
 # Coq
 set coq_dir /Applications/CoqIDE_8.4pl5.app/Contents
