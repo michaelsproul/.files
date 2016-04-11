@@ -19,6 +19,7 @@ Plugin 'idris-hackers/idris-vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'def-lkb/vimbufsync'
 Plugin 'the-lambda-church/coquille'
+Plugin 'dag/vim-fish'
 
 call vundle#end()
 
@@ -156,4 +157,14 @@ autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
 autocmd FileType go call Tabs(4)
-autocmd FileType html call Spaces(2)
+autocmd FileType html,coq call Spaces(2)
+
+autocmd FileType coq call coquille#Register()
+
+" Coq keyboard mappings.
+map <buffer> <silent> <C-b>    :CoqUndo<CR>
+map <buffer> <silent> <C-n>  :CoqNext<CR>
+map <buffer> <silent> <C-m>  :CoqToCursor<CR>
+
+" Vim needs bash, not fish (or whatever other l337 shell)
+set shell=/bin/bash

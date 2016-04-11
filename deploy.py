@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 
-"""Dotfiles deploy script by Michael Sproul, 2015. GPLv3+"""
+"""Dotfiles deploy script by Michael Sproul, 2016. GPLv3+"""
 
 import os
 import shutil
@@ -9,7 +9,7 @@ import shutil
 EXCLUDE = {"deploy.py", "Readme.md", ".git", ".gitignore", ".gitmodules"}
 
 # Set of directories which will be linked *as directories*
-DIR_LINKS = {"bash", "nano", "vim/syntax", "vim/bundle"}
+DIR_LINKS = {"bash", "nano", "vim/syntax", "vim/bundle", "config/fish/functions"}
 
 NO = ["n", "no"]
 YES = ["y", "yes"]
@@ -32,7 +32,7 @@ def recursive_mirror(src_root, path, dest_root, add_dot=True):
 	# Avoid adding doubled dotted files like "..git"
 	if add_dot and path != "" and path[0] == '.':
 		print(">> You're about to make a file called .%s" % path)
-		ans = input(">> Are you on crack? Continue? [y/N] ")
+		ans = raw_input(">> Are you on crack? Continue? [y/N] ")
 		if ans == "" or ans.lower() not in YES:
 			return
 
@@ -80,14 +80,14 @@ def recursive_mirror(src_root, path, dest_root, add_dot=True):
 
 def delete(path, type):
 	if type == "dir":
-		ans = input(">> Delete entire directory %s ? [y/N] " % path)
+		ans = raw_input(">> Delete entire directory %s ? [y/N] " % path)
 		if ans.lower() in NO:
 			return False
 		else:
 			shutil.rmtree(path)
 			return True
 	else:
-		ans = input(">> Delete existing %s, %s ? [y/N] " % (type, path))
+		ans = raw_input(">> Delete existing %s, %s ? [y/N] " % (type, path))
 		if ans.lower() in NO:
 			return False
 		else:
