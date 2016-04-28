@@ -20,6 +20,8 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'def-lkb/vimbufsync'
 Plugin 'the-lambda-church/coquille'
 Plugin 'dag/vim-fish'
+Plugin 'lervag/vimtex'
+Plugin 'elixir-lang/vim-elixir'
 
 call vundle#end()
 
@@ -33,6 +35,10 @@ filetype on
 
 " Set the terminal title when editing.
 set title
+
+" iTerm tab hacks.
+set t_ts=]1;
+set t_fs=
 
 " Mouse support.
 set mouse=a
