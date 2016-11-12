@@ -22,6 +22,7 @@ Plugin 'the-lambda-church/coquille'
 Plugin 'dag/vim-fish'
 Plugin 'lervag/vimtex'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'derekwyatt/vim-scala'
 
 call vundle#end()
 
