@@ -1,0 +1,13 @@
+directory: ~/Music/Beets
+library: ~/Music/beets.blb
+
+import:
+    copy: no
+    write: no
+
+plugins: convert
+
+convert:
+    dest: ~/Music/PhoneMusic
+    never_convert_lossy_files: yes
+    format: ogg
