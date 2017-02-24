@@ -1,13 +1,14 @@
-directory: ~/Music/Beets
-library: ~/Music/beets.blb
+directory: /mnt/storage/Music
+library: /mnt/storage/Music/beets.blb
 
 import:
     copy: no
     write: no
 
-plugins: convert
+plugins: convert web usertag
 
 convert:
-    dest: ~/Music/PhoneMusic
+    command: ffmpeg -i $source -y -vn -acodec libvorbis -aq 7 $dest
+    extension: ogg
+    dest: /mnt/storage/MusicPhone
     never_convert_lossy_files: yes
-    format: ogg
