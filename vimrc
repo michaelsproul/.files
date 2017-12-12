@@ -23,6 +23,7 @@ Plugin 'dag/vim-fish'
 Plugin 'lervag/vimtex'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'tomlion/vim-solidity'
 
 call vundle#end()
 
@@ -44,9 +45,8 @@ set t_fs=
 " Mouse support.
 set mouse=a
 
-" Disable line numbering.
-set nonumber
-
+" Line numbering.
+set number
 
 " -- Status line.
 " Always display the status line.
@@ -120,6 +120,8 @@ set whichwrap+=<,>,[,]
 " Allow lurking at the end of a line.
 set virtualedit=onemore
 
+" Disable exmode.
+map Q <Nop>
 
 " -- Whitespace.
 " Function for indenting using tabs.
@@ -156,22 +158,26 @@ endfunction
 " autocmd BufWritePre * call StripTrailingWhitespace()
 " autocmd FileType markdown let b:noStripWhitespace=1
 
-
 " -- File types.
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.pl set filetype=prolog
 autocmd BufRead,BufNewFile *.gradle set filetype=groovy
+autocmd BufRead,BufNewFile *.ds set filetype=haskell
+autocmd BufRead,BufNewFile *.hbs set filetype=html
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
 autocmd FileType go call Tabs(4)
 autocmd FileType html,coq call Spaces(2)
+autocmd BufRead,BufNewFile *.model set filetype=runway
 
-autocmd FileType coq call coquille#Register()
+" autocmd FileType coq call coquille#Register()
 
 " Coq keyboard mappings.
-map <buffer> <silent> <C-b>    :CoqUndo<CR>
-map <buffer> <silent> <C-n>  :CoqNext<CR>
-map <buffer> <silent> <C-m>  :CoqToCursor<CR>
+" map <buffer> <silent> <C-b>    :CoqUndo<CR>
+" map <buffer> <silent> <C-n>  :CoqNext<CR>
+" map <buffer> <silent> <C-m>  :CoqToCursor<CR>
 
 " Vim needs bash, not fish (or whatever other l337 shell)
 set shell=/bin/bash
+
+highlight LineNr ctermbg=234 ctermfg=238
