@@ -4,7 +4,7 @@ filetype off
 " -- Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'godlygeek/csapprox'
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'rust-lang/rust.vim'
