@@ -1,3 +1,4 @@
 function prompt_pwd
-	basename (echo $PWD | sed -e "s|$HOME|~|")
+    # NOTE: Add `basename (..)` for short path
+    echo $PWD | sed -e "s|$HOME|~|"
 end

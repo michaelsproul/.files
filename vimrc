@@ -12,6 +12,7 @@ Plugin 'Lokaltog/vim-distinguished'
 Plugin 'ciaranm/detectindent'
 Plugin 'cespare/vim-toml'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'kchmck/vim-coffee-script'
@@ -24,6 +25,9 @@ Plugin 'lervag/vimtex'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tomlion/vim-solidity'
+Plugin 'jez/vim-better-sml'
+Plugin 'endel/vim-github-colorscheme'
+
 
 call vundle#end()
 
@@ -69,7 +73,7 @@ let g:airline_section_z = "C%02c L%l/%L"
 
 " -- Syntax highlighting.
 syntax on
-set background=dark
+set background=light
 
 " Set up CSApprox (colour scheme approximation).
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
@@ -77,10 +81,12 @@ let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 " Use the terminal's background colour.
 let g:CSApprox_hook_post = ['hi Normal ctermfg=NONE ctermbg=NONE',
 			\   'hi NonText ctermbg=NONE ctermfg=NONE']
-colorscheme hemisu
+colorscheme github
+let g:airline_theme='sol'
+" highlight LineNr ctermbg=234 ctermfg=238
 
 " Show line barrier at column 100.
-highlight ColorColumn ctermbg=237
+" highlight ColorColumn ctermbg=237
 set colorcolumn=100
 
 
@@ -105,8 +111,7 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 set scrolloff=8
 
 " Use the system clipboard!
-set clipboard=unnamed
-
+set clipboard=unnamedplus
 
 " -- Wrapping.
 " Disable wrapping by default (enabled for certain filetypes below).
@@ -157,17 +162,18 @@ endfunction
 " Automatically strip trailing whitespace (disabled).
 " autocmd BufWritePre * call StripTrailingWhitespace()
 " autocmd FileType markdown let b:noStripWhitespace=1
-
 " -- File types.
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.pl set filetype=prolog
 autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 autocmd BufRead,BufNewFile *.ds set filetype=haskell
 autocmd BufRead,BufNewFile *.hbs set filetype=html
+autocmd BufRead,BufNewFile *.{sig,lem} set filetype=sml
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
 autocmd FileType go call Tabs(4)
-autocmd FileType html,coq call Spaces(2)
+autocmd FileType html,coq,sml call Spaces(2)
+autocmd FileType lhs call Spaces(4)
 autocmd BufRead,BufNewFile *.model set filetype=runway
 
 " autocmd FileType coq call coquille#Register()
@@ -179,5 +185,3 @@ autocmd BufRead,BufNewFile *.model set filetype=runway
 
 " Vim needs bash, not fish (or whatever other l337 shell)
 set shell=/bin/bash
-
-highlight LineNr ctermbg=234 ctermfg=238
