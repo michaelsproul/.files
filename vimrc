@@ -146,8 +146,8 @@ endfunction
 call Spaces(4)
 
 " Higlight trailing whitespace.
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=lightblue
-highlight ExtraWhiteSpace ctermbg=lightblue
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=lightred
+highlight ExtraWhiteSpace ctermbg=lightred
 match ExtraWhiteSpace /\s\+$/
 
 " Function to strip trailing whitespace.
