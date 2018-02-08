@@ -111,7 +111,7 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 set scrolloff=8
 
 " Use the system clipboard!
-set clipboard=unnamedplus
+set clipboard^=unnamed,unnamedplus
 
 " -- Wrapping.
 " Disable wrapping by default (enabled for certain filetypes below).
