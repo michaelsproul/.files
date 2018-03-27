@@ -112,6 +112,7 @@ set scrolloff=8
 
 " Use the system clipboard!
 set clipboard^=unnamed,unnamedplus
+autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
 " -- Wrapping.
 " Disable wrapping by default (enabled for certain filetypes below).
@@ -168,7 +169,7 @@ autocmd BufRead,BufNewFile *.pl set filetype=prolog
 autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 autocmd BufRead,BufNewFile *.ds set filetype=haskell
 autocmd BufRead,BufNewFile *.hbs set filetype=html
-autocmd BufRead,BufNewFile *.{sig,lem} set filetype=sml
+autocmd BufRead,BufNewFile *.{sig,lem,cml,ml,ML} set filetype=sml
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
 autocmd FileType go call Tabs(4)
