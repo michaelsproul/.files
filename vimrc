@@ -176,6 +176,7 @@ autocmd FileType go call Tabs(4)
 autocmd FileType html,coq,sml call Spaces(2)
 autocmd FileType lhs call Spaces(4)
 autocmd BufRead,BufNewFile *.model set filetype=runway
+au BufRead,BufNewFile *.k set filetype=kframework
 
 " autocmd FileType coq call coquille#Register()
 
