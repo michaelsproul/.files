@@ -1,3 +1,3 @@
 function fish_title
-    short_pwd
+    prompt_pwd
 end

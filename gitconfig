@@ -8,4 +8,6 @@
 [credential]
 	helper = cache
 [grep]
-    lineNumber = true
+	lineNumber = true
+[core]
+	excludesfile = ~/.gitignore
