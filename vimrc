@@ -26,7 +26,9 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tomlion/vim-solidity'
 Plugin 'jez/vim-better-sml'
+" Plugin 'andy-morris/sml.vim'
 Plugin 'endel/vim-github-colorscheme'
+Plugin 'esorton/vim-aadl'
 
 
 call vundle#end()
@@ -169,7 +171,7 @@ autocmd BufRead,BufNewFile *.pl set filetype=prolog
 autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 autocmd BufRead,BufNewFile *.ds set filetype=haskell
 autocmd BufRead,BufNewFile *.hbs set filetype=html
-autocmd BufRead,BufNewFile *.{sig,lem,cml,ml,ML} set filetype=sml
+autocmd BufRead,BufNewFile *.{sml,sig,lem,cml,ml,ML} set filetype=sml
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
 autocmd FileType go call Tabs(4)
