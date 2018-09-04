@@ -45,8 +45,10 @@ filetype on
 set title
 
 " iTerm tab hacks.
-set t_ts=]1;
-set t_fs=
+if has("macunix")
+    set t_ts=]1;
+    set t_fs=
+endif
 
 " Mouse support.
 set mouse=a
