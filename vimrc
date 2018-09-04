@@ -87,7 +87,7 @@ let g:CSApprox_hook_post = ['hi Normal ctermfg=NONE ctermbg=NONE',
 			\   'hi NonText ctermbg=NONE ctermfg=NONE']
 colorscheme github
 let g:airline_theme='sol'
-" highlight LineNr ctermbg=234 ctermfg=238
+highlight LineNr ctermbg=255 ctermfg=grey
 
 " Show line barrier at column 100.
 " highlight ColorColumn ctermbg=237
