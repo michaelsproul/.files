@@ -38,8 +38,9 @@ call vundle#end()
 " Use UTF-8.
 set encoding=utf-8
 
-" Detect filetype, but don't enable auto indenting.
+" Detect filetype, enable auto indenting
 filetype on
+set ai
 
 " Set the terminal title when editing.
 set title
@@ -177,7 +178,7 @@ autocmd BufRead,BufNewFile *.{sml,sig,lem,cml,ml,ML} set filetype=sml
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
 autocmd FileType go call Tabs(4)
-autocmd FileType html,coq,sml call Spaces(2)
+autocmd FileType html,coq call Spaces(2)
 autocmd FileType lhs call Spaces(4)
 autocmd BufRead,BufNewFile *.model set filetype=runway
 au BufRead,BufNewFile *.k set filetype=kframework
@@ -191,3 +192,6 @@ au BufRead,BufNewFile *.k set filetype=kframework
 
 " Vim needs bash, not fish (or whatever other l337 shell)
 set shell=/bin/bash
+
+" Recognise bullet lists, and wrap them correctly
+set com=fb:*,fb:-,fb:+
