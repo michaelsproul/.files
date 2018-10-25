@@ -1,0 +1,8 @@
+*.swp
+
+*.o
+
+.HOLMK
+.hollogs
+*.uo
+*.ui
