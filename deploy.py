@@ -6,7 +6,7 @@ import os
 import shutil
 
 # Set of paths to exclude, relative to the current directory
-EXCLUDE = {"deploy.py", "Readme.md", ".git", ".gitignore", ".gitmodules"}
+EXCLUDE = {"deploy.py", "Readme.md", ".git", ".gitignore", ".gitmodules", "DefaultKeyBinding.dict"}
 
 # Set of directories which will be linked *as directories*
 DIR_LINKS = {"bash", "nano", "vim/syntax", "vim/bundle", "config/fish/functions"}
