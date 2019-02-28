@@ -1,5 +1,5 @@
 function color
-    if math (count $argv) "< 2" > /dev/null
+    if test (count $argv) -lt 2
         echo "Usage: color [<set_color options>] <color> <text>"
         return
     end
