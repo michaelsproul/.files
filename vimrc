@@ -39,7 +39,7 @@ call vundle#end()
 set encoding=utf-8
 
 " Detect filetype, enable auto indenting
-filetype on
+filetype plugin on
 set ai
 
 " Set the terminal title when editing.
@@ -195,3 +195,6 @@ set shell=/bin/bash
 
 " Recognise bullet lists, and wrap them correctly
 set com=fb:*,fb:-,fb:+
+
+" Auto-format Rust code.
+let g:rustfmt_autosave = 1
