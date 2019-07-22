@@ -1,6 +1,7 @@
 [user]
 	email = micsproul@gmail.com
 	name = Michael Sproul
+	signingkey = 77B1309D2E54E914
 [color]
 	ui = true
 [push]
@@ -11,3 +12,8 @@
 	lineNumber = true
 [core]
 	excludesfile = ~/.gitignore
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

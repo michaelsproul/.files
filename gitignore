@@ -6,3 +6,11 @@
 .hollogs
 *.uo
 *.ui
+
+__pycache__
+
+\#*.v\#
+
+.DS_Store
+
+.vscode
