@@ -28,7 +28,6 @@ Plugin 'tomlion/vim-solidity'
 Plugin 'jez/vim-better-sml'
 " Plugin 'andy-morris/sml.vim'
 Plugin 'endel/vim-github-colorscheme'
-Plugin 'esorton/vim-aadl'
 
 
 call vundle#end()
@@ -78,7 +77,6 @@ let g:airline_section_z = "C%02c L%l/%L"
 
 " -- Syntax highlighting.
 syntax on
-set background=light
 
 " Set up CSApprox (colour scheme approximation).
 let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
@@ -86,14 +84,25 @@ let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
 " Use the terminal's background colour.
 let g:CSApprox_hook_post = ['hi Normal ctermfg=NONE ctermbg=NONE',
 			\   'hi NonText ctermbg=NONE ctermfg=NONE']
-colorscheme github
 let g:airline_theme='sol'
-highlight LineNr ctermbg=255 ctermfg=grey
 
 " Show line barrier at column 100.
-" highlight ColorColumn ctermbg=237
 set colorcolumn=100
 
+function LightTheme()
+    set background=light
+    colorscheme github
+    highlight LineNr ctermbg=333 ctermfg=grey
+endfunction
+
+function DarkTheme()
+    set background=dark
+    colorscheme hemisu
+    highlight LineNr ctermbg=333 ctermfg=darkgrey
+    highlight ColorColumn ctermbg=237
+endfunction
+
+call DarkTheme()
 
 " -- Editing.
 " Exit insert mode immediately.
