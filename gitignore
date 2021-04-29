@@ -1,4 +1,4 @@
-*.swp
+.*.sw*
 
 *.o
 
@@ -15,3 +15,11 @@ __pycache__
 
 .vscode
 *.db
+
+heaptrack.*.gz
+
+*.log
+*.svg
+
+node_modules/
+package-lock.json

@@ -26,20 +26,20 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'tomlion/vim-solidity'
 Plugin 'jez/vim-better-sml'
+Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'andy-morris/sml.vim'
 Plugin 'endel/vim-github-colorscheme'
-
+" Plugin 'fsharp/vim-fsharp'
 
 call vundle#end()
-
-
-" -- Basic options.
-" Use UTF-8.
-set encoding=utf-8
 
 " Detect filetype, enable auto indenting
 filetype plugin on
 set ai
+
+" -- Basic options.
+" Use UTF-8.
+set encoding=utf-8
 
 " Set the terminal title when editing.
 set title
@@ -103,6 +103,7 @@ function DarkTheme()
 endfunction
 
 call DarkTheme()
+" call LightTheme()
 
 " -- Editing.
 " Exit insert mode immediately.
@@ -143,12 +144,17 @@ set virtualedit=onemore
 " Disable exmode.
 map Q <Nop>
 
+" Auto-reload files that have changed outside of Vim
+set autoread
+au CursorHold,CursorHoldI,InsertEnter * checktime
+
 " -- Whitespace.
 " Function for indenting using tabs.
 function Tabs(width)
 	set noexpandtab nosmarttab
     let &tabstop=a:width
     let &shiftwidth=a:width
+    let &softtabstop=0
 endfunction
 
 " Function for indenting using spaces.
@@ -158,7 +164,7 @@ function Spaces(width)
     let &shiftwidth=a:width
 endfunction
 
-call Spaces(4)
+" call Spaces(4)
 
 " Higlight trailing whitespace.
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=lightred
@@ -184,12 +190,15 @@ autocmd BufRead,BufNewFile *.gradle set filetype=groovy
 autocmd BufRead,BufNewFile *.ds set filetype=haskell
 autocmd BufRead,BufNewFile *.hbs set filetype=html
 autocmd BufRead,BufNewFile *.{sml,sig,lem,cml,ml,ML} set filetype=sml
+autocmd BufRead,BufNewFile Makefile set filetype=make " XXX: this is a hack
 autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
 autocmd FileType go call Tabs(4)
 autocmd FileType html,coq call Spaces(2)
 autocmd FileType lhs call Spaces(4)
+autocmd BufRead,BufNewFile *.mini call Spaces(4)
 autocmd BufRead,BufNewFile *.model set filetype=runway
+autocmd BufRead,BufNewFile *.mini set filetype=rust
 au BufRead,BufNewFile *.k set filetype=kframework
 
 " autocmd FileType coq call coquille#Register()
