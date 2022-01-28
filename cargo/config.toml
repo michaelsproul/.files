@@ -1,0 +1,13 @@
+[term]
+color = 'always'
+
+[profile.bench]
+incremental = true
+codegen-units = 32
+
+[profile.release]
+incremental = true
+codegen-units = 32
+
+[build]
+rustflags = ["-C", "linker=clang", "-C", "link-arg=-fuse-ld=/usr/bin/mold"]
