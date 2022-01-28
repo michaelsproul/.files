@@ -1,5 +1,5 @@
 [user]
-	email = micsproul@gmail.com
+	email = michael@sigmaprime.io
 	name = Michael Sproul
 	signingkey = 77B1309D2E54E914
 [color]
@@ -19,3 +19,12 @@
 	required = true
 [commit]
 	gpgsign = true
+[pull]
+	ff = only
+[stash]
+	showPatch = true
+
+[remote.sean]
+	tagOpt = --no-tags
+[remote.michael]
+	tagOpt = --no-tags
