@@ -195,8 +195,8 @@ autocmd FileType text,markdown setlocal wrap
 autocmd FileType make call Tabs(8)
 autocmd FileType go call Tabs(4)
 autocmd FileType html,coq call Spaces(2)
-autocmd FileType lhs call Spaces(4)
 autocmd FileType sql call Spaces(2)
+autocmd FileType haskell,lhs,cabal call Spaces(4)
 autocmd BufRead,BufNewFile *.mini call Spaces(4)
 autocmd BufRead,BufNewFile *.model set filetype=runway
 autocmd BufRead,BufNewFile *.mini set filetype=rust

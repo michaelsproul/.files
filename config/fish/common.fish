@@ -14,3 +14,4 @@ set -gx PYTHONDONTWRITEBYTECODE 1
 
 # Rust
 alias ru=rustup
+set -gx PATH ~/.cargo/bin $PATH
