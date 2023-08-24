@@ -28,3 +28,5 @@
 	tagOpt = --no-tags
 [remote.michael]
 	tagOpt = --no-tags
+[init]
+	defaultBranch = main
