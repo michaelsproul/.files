@@ -9,5 +9,5 @@ codegen-units = 32
 incremental = true
 codegen-units = 32
 
-[build]
-rustflags = ["-C", "linker=clang", "-C", "link-arg=-fuse-ld=/usr/bin/mold"]
+[target.x86_64-unknown-linux-gnu]
+rustflags = ["-C", "link-arg=-fuse-ld=/usr/bin/mold"]
