@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 
 """Dotfiles deploy script by Michael Sproul, 2016. GPLv3+"""
 
@@ -32,7 +32,7 @@ def recursive_mirror(src_root, path, dest_root, add_dot=True):
 	# Avoid adding doubled dotted files like "..git"
 	if add_dot and path != "" and path[0] == '.':
 		print(">> You're about to make a file called .%s" % path)
-		ans = raw_input(">> Are you on crack? Continue? [y/N] ")
+		ans = input(">> Are you on crack? Continue? [y/N] ")
 		if ans == "" or ans.lower() not in YES:
 			return
 
@@ -80,14 +80,14 @@ def recursive_mirror(src_root, path, dest_root, add_dot=True):
 
 def delete(path, type):
 	if type == "dir":
-		ans = raw_input(">> Delete entire directory %s ? [y/N] " % path)
+		ans = input(">> Delete entire directory %s ? [y/N] " % path)
 		if ans.lower() in NO:
 			return False
 		else:
 			shutil.rmtree(path)
 			return True
 	else:
-		ans = raw_input(">> Delete existing %s, %s ? [y/N] " % (type, path))
+		ans = input(">> Delete existing %s, %s ? [y/N] " % (type, path))
 		if ans.lower() in NO:
 			return False
 		else:
